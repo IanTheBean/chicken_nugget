@@ -47,9 +47,9 @@ class Editor:
 
         ip.Percolator(self.text).insertfilter(cdg)
 
-        # self.root.bind('<KeyRelease>', self.update)
+        self.root.bind('<KeyRelease>', self.update)
 
-        # self.client = Client("127.0.0.1", 12345, self)
+        self.client = Client("127.0.0.1", 12345, self)
 
         self.root.mainloop()
 
@@ -65,8 +65,7 @@ class Editor:
             elif s[0] == '-':
                 print(u'Delete "{}" from position {}({})'.format(s[-1], i, self.line_index(i, self.contents)))
             elif s[0] == '+':
-                # self.client.send("new|" + self.line_index(i, self.contents) + "|" + s[-1])
-                pass
+                self.client.send("new|" + self.line_index(i, self.contents) + "|" + s[-1])
 
         self.contents = new
 
